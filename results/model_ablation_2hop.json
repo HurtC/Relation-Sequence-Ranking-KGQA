@@ -1,0 +1,291 @@
+{
+  "protocol": "METAQA-NOTEMPLATE-V3-STRICT-SUPPLEMENT-DEV-ONLY-20261012",
+  "hop": "2hop",
+  "test_loaded": false,
+  "train_path": "candidate_reasoning_space/outputs/graph_notemplate_v1_20261010/metaqa_2hop/candidate/train.jsonl",
+  "dev_path": "candidate_reasoning_space/outputs/graph_notemplate_v1_20261010/metaqa_2hop/candidate/dev.jsonl",
+  "train_sha256": "64efad224b97218b1f53034aad9f8e53d271523ca2f333bc2fbd984a9712150b",
+  "dev_sha256": "c38e9a300162d3270d287d04b06dacb6979a9f0033e2282e010dc907d8e36de0",
+  "anchor_sources": [
+    {
+      "path": "candidate_reasoning_space/outputs/graph_notemplate_v1_20261010/metaqa_2hop/candidate/train.jsonl",
+      "sha256": "64efad224b97218b1f53034aad9f8e53d271523ca2f333bc2fbd984a9712150b"
+    },
+    {
+      "path": "candidate_reasoning_space/outputs/graph_notemplate_v1_20261010/metaqa_2hop/candidate/dev.jsonl",
+      "sha256": "c38e9a300162d3270d287d04b06dacb6979a9f0033e2282e010dc907d8e36de0"
+    }
+  ],
+  "train_examples": 10000,
+  "dev_examples": 3000,
+  "max_features": 50000,
+  "tree_estimators": 200,
+  "random_state": 42,
+  "notes": [
+    "All model families in full_v3 consume the identical sparse matrix.",
+    "No test split is read by this program.",
+    "Gold answer/F1 is used only as the training target and for development evaluation.",
+    "Topic anchors are used only by the two explicitly named entity-removal audits."
+  ],
+  "feature_modes": {
+    "full_v3": {
+      "feature_mode": "full_v3",
+      "train_matrix_shape": [
+        95488,
+        50012
+      ],
+      "dev_matrix_shape": [
+        28944,
+        50012
+      ],
+      "vocabulary_size": 50000,
+      "train_anchor_audit": {
+        "question_count": 10000,
+        "changed_question_count": 10000,
+        "missing_anchor_count": 0,
+        "missing_anchor_qids_first20": []
+      },
+      "dev_anchor_audit": {
+        "question_count": 3000,
+        "changed_question_count": 3000,
+        "missing_anchor_count": 0,
+        "missing_anchor_qids_first20": []
+      },
+      "models": {
+        "extratrees": {
+          "summary": {
+            "examples": 3000,
+            "avg_precision": 0.9997777777777777,
+            "avg_recall": 0.9985226053639847,
+            "avg_f1": 0.998704761904762,
+            "exact_rate": 0.997,
+            "set_hits_at_1": 1.0
+          },
+          "best_iteration": null,
+          "elapsed_seconds": 421.84102511405945
+        },
+        "randomforest": {
+          "summary": {
+            "examples": 3000,
+            "avg_precision": 0.9974679894179895,
+            "avg_recall": 0.9959962244572157,
+            "avg_f1": 0.9956659166770624,
+            "exact_rate": 0.9893333333333333,
+            "set_hits_at_1": 0.9993333333333333
+          },
+          "best_iteration": null,
+          "elapsed_seconds": 7.378394842147827
+        },
+        "lightgbm_regression": {
+          "summary": {
+            "examples": 3000,
+            "avg_precision": 0.9990365079365079,
+            "avg_recall": 0.9992909356725146,
+            "avg_f1": 0.9988695144724556,
+            "exact_rate": 0.9973333333333333,
+            "set_hits_at_1": 1.0
+          },
+          "best_iteration": 542,
+          "elapsed_seconds": 34.668596029281616
+        },
+        "lambdamart": {
+          "summary": {
+            "examples": 3000,
+            "avg_precision": 1.0,
+            "avg_recall": 0.9999166666666667,
+            "avg_f1": 0.999952380952381,
+            "exact_rate": 0.9996666666666667,
+            "set_hits_at_1": 1.0
+          },
+          "best_iteration": 104,
+          "elapsed_seconds": 13.501633167266846
+        },
+        "randomforest_all_features": {
+          "summary": {
+            "examples": 3000,
+            "avg_precision": 0.9985833333333334,
+            "avg_recall": 0.9965170498084289,
+            "avg_f1": 0.9969595238095238,
+            "exact_rate": 0.995,
+            "set_hits_at_1": 0.9986666666666667
+          },
+          "best_iteration": null,
+          "elapsed_seconds": 1788.5832874774933
+        },
+        "logistic_regression": {
+          "summary": {
+            "examples": 3000,
+            "avg_precision": 0.9940972222222222,
+            "avg_recall": 0.9948838624338623,
+            "avg_f1": 0.9935158424908425,
+            "exact_rate": 0.9886666666666667,
+            "set_hits_at_1": 0.9973333333333333
+          },
+          "best_iteration": null,
+          "elapsed_seconds": 31.119125604629517
+        }
+      },
+      "paired_bootstrap": {
+        "lambdamart_vs_extratrees": {
+          "reference_minus_comparison": 0.0012476190476190475,
+          "ci95_low": 0.0004221825396825397,
+          "ci95_high": 0.0023063492063492065,
+          "bootstrap_replicates": 10000
+        },
+        "lambdamart_vs_randomforest": {
+          "reference_minus_comparison": 0.0042864642753187646,
+          "ci95_low": 0.0026306816059757238,
+          "ci95_high": 0.006126392064248101,
+          "bootstrap_replicates": 10000,
+          "paired_qids": 3000
+        },
+        "lambdamart_vs_lightgbm_regression": {
+          "reference_minus_comparison": 0.0010828664799253035,
+          "ci95_low": 0.0002892156862745098,
+          "ci95_high": 0.002075548552754433,
+          "bootstrap_replicates": 10000
+        },
+        "lambdamart_vs_randomforest_all_features": {
+          "reference_minus_comparison": 0.002992857142857143,
+          "ci95_low": 0.0014206349206349206,
+          "ci95_high": 0.004805595238095238,
+          "bootstrap_replicates": 10000,
+          "paired_qids": 3000
+        },
+        "lambdamart_vs_logistic_regression": {
+          "reference_minus_comparison": 0.006436538461538461,
+          "ci95_low": 0.004118904914529914,
+          "ci95_high": 0.008997786172161173,
+          "bootstrap_replicates": 10000
+        }
+      }
+    },
+    "no_interaction": {
+      "feature_mode": "no_interaction",
+      "train_matrix_shape": [
+        95488,
+        32571
+      ],
+      "dev_matrix_shape": [
+        28944,
+        32571
+      ],
+      "vocabulary_size": 32559,
+      "train_anchor_audit": {
+        "question_count": 10000,
+        "changed_question_count": 10000,
+        "missing_anchor_count": 0,
+        "missing_anchor_qids_first20": []
+      },
+      "dev_anchor_audit": {
+        "question_count": 3000,
+        "changed_question_count": 3000,
+        "missing_anchor_count": 0,
+        "missing_anchor_qids_first20": []
+      },
+      "models": {
+        "lambdamart": {
+          "summary": {
+            "examples": 3000,
+            "avg_precision": 0.9984259259259259,
+            "avg_recall": 0.9985064102564103,
+            "avg_f1": 0.9982479247805333,
+            "exact_rate": 0.997,
+            "set_hits_at_1": 0.999
+          },
+          "best_iteration": 116,
+          "elapsed_seconds": 5.053159236907959
+        }
+      },
+      "paired_bootstrap": {}
+    },
+    "interaction_anchor_removed": {
+      "feature_mode": "interaction_anchor_removed",
+      "train_matrix_shape": [
+        95488,
+        41348
+      ],
+      "dev_matrix_shape": [
+        28944,
+        41348
+      ],
+      "vocabulary_size": 41336,
+      "train_anchor_audit": {
+        "question_count": 10000,
+        "changed_question_count": 10000,
+        "missing_anchor_count": 0,
+        "missing_anchor_qids_first20": []
+      },
+      "dev_anchor_audit": {
+        "question_count": 3000,
+        "changed_question_count": 3000,
+        "missing_anchor_count": 0,
+        "missing_anchor_qids_first20": []
+      },
+      "models": {
+        "lambdamart": {
+          "summary": {
+            "examples": 3000,
+            "avg_precision": 1.0,
+            "avg_recall": 0.999638888888889,
+            "avg_f1": 0.9997746031746031,
+            "exact_rate": 0.999,
+            "set_hits_at_1": 1.0
+          },
+          "best_iteration": 139,
+          "elapsed_seconds": 10.751251220703125
+        }
+      },
+      "paired_bootstrap": {}
+    },
+    "all_question_anchor_removed": {
+      "feature_mode": "all_question_anchor_removed",
+      "train_matrix_shape": [
+        95488,
+        9266
+      ],
+      "dev_matrix_shape": [
+        28944,
+        9266
+      ],
+      "vocabulary_size": 9254,
+      "train_anchor_audit": {
+        "question_count": 10000,
+        "changed_question_count": 10000,
+        "missing_anchor_count": 0,
+        "missing_anchor_qids_first20": []
+      },
+      "dev_anchor_audit": {
+        "question_count": 3000,
+        "changed_question_count": 3000,
+        "missing_anchor_count": 0,
+        "missing_anchor_qids_first20": []
+      },
+      "models": {
+        "lambdamart": {
+          "summary": {
+            "examples": 3000,
+            "avg_precision": 1.0,
+            "avg_recall": 0.9999166666666667,
+            "avg_f1": 0.999952380952381,
+            "exact_rate": 0.9996666666666667,
+            "set_hits_at_1": 1.0
+          },
+          "best_iteration": 52,
+          "elapsed_seconds": 2.2409679889678955
+        }
+      },
+      "paired_bootstrap": {}
+    }
+  },
+  "randomforest_primary": {
+    "n_estimators": 200,
+    "max_features": "sqrt",
+    "reason": "consistent conventional random-subspace RandomForest across all hops"
+  },
+  "randomforest_all_features_diagnostic": {
+    "available": true,
+    "n_estimators": 200,
+    "max_features": 1.0
+  }
+}

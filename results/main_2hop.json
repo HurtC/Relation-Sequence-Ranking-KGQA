@@ -1,0 +1,20 @@
+{
+  "total_examples": 14872,
+  "selection_mode": "top1",
+  "max_select": 1,
+  "second_score_threshold": null,
+  "score_margin_threshold": null,
+  "avg_precision": 0.9997208886904096,
+  "avg_recall": 0.9995808506530521,
+  "avg_f1": 0.9996204855302487,
+  "exact_count": 14863,
+  "exact_rate": 0.9993948359332975,
+  "answer_hit_count": 14868,
+  "answer_hit_rate": 0.9997310381925767,
+  "avg_selected_count": 1.0,
+  "empty_selection_count": 0,
+  "empty_selection_rate": 0.0,
+  "avg_gold_count": 6.2078402366863905,
+  "avg_pred_count": 6.209252286175363,
+  "avg_overlap_count": 6.205486820871436
+}

@@ -1,0 +1,90 @@
+{
+  "protocol": "METAQA-NOTEMPLATE-V3-FEATURE-TYPE-ABLATION-DEV-ONLY-20261012",
+  "hop": "2hop",
+  "test_loaded": false,
+  "train_path": "candidate_reasoning_space/outputs/graph_notemplate_v1_20261010/metaqa_2hop/candidate/train.jsonl",
+  "dev_path": "candidate_reasoning_space/outputs/graph_notemplate_v1_20261010/metaqa_2hop/candidate/dev.jsonl",
+  "train_sha256": "64efad224b97218b1f53034aad9f8e53d271523ca2f333bc2fbd984a9712150b",
+  "dev_sha256": "c38e9a300162d3270d287d04b06dacb6979a9f0033e2282e010dc907d8e36de0",
+  "train_examples": 10000,
+  "dev_examples": 3000,
+  "train_candidates": 95488,
+  "dev_candidates": 28944,
+  "vocabulary_size": 50000,
+  "numeric_feature_count": 12,
+  "max_features": 50000,
+  "random_state": 42,
+  "settings": {
+    "full": {
+      "feature_setting": "full",
+      "train_matrix_shape": [
+        95488,
+        50012
+      ],
+      "dev_matrix_shape": [
+        28944,
+        50012
+      ],
+      "best_iteration": 104,
+      "elapsed_seconds": 13.69408106803894,
+      "summary": {
+        "examples": 3000,
+        "avg_precision": 1.0,
+        "avg_recall": 0.9999166666666667,
+        "avg_f1": 0.999952380952381,
+        "exact_rate": 0.9996666666666667,
+        "set_hits_at_1": 1.0
+      }
+    },
+    "text_only": {
+      "feature_setting": "text_only",
+      "train_matrix_shape": [
+        95488,
+        50000
+      ],
+      "dev_matrix_shape": [
+        28944,
+        50000
+      ],
+      "best_iteration": 109,
+      "elapsed_seconds": 14.49361538887024,
+      "summary": {
+        "examples": 3000,
+        "avg_precision": 1.0,
+        "avg_recall": 0.9999166666666667,
+        "avg_f1": 0.999952380952381,
+        "exact_rate": 0.9996666666666667,
+        "set_hits_at_1": 1.0
+      }
+    },
+    "numeric_only": {
+      "feature_setting": "numeric_only",
+      "train_matrix_shape": [
+        95488,
+        12
+      ],
+      "dev_matrix_shape": [
+        28944,
+        12
+      ],
+      "best_iteration": 358,
+      "elapsed_seconds": 1.4298105239868164,
+      "summary": {
+        "examples": 3000,
+        "avg_precision": 0.6231234345364245,
+        "avg_recall": 0.6340924609278692,
+        "avg_f1": 0.620965434389903,
+        "exact_rate": 0.5923333333333334,
+        "set_hits_at_1": 0.6673333333333333
+      }
+    }
+  },
+  "notes": [
+    "No test split is accepted or loaded by this program.",
+    "Full is the frozen no-template V3 text representation plus the original 12 graph features.",
+    "Text-only removes all 12 numeric graph features but preserves the frozen V3 raw text/local interactions.",
+    "Numeric-only removes all TF-IDF and local word-relation interaction features.",
+    "Gold/F1 is used only for train relevance labels and development-set evaluation."
+  ],
+  "elapsed_seconds": 69.91119432449341
+}

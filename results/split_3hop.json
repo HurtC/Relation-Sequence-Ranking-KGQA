@@ -1,0 +1,13 @@
+{
+  "input": "candidate_reasoning_space/outputs/iterative_v3/final_test/metaqa_3hop/candidate/test_full_uncapped.jsonl",
+  "output": "candidate_reasoning_space/outputs/graph_notemplate_v2_20261011/metaqa_3hop/final_test/coarse_pool/test_top30.jsonl",
+  "model_path": "candidate_reasoning_space/outputs/graph_notemplate_v2_20261011/metaqa_3hop/coarse_logreg/coarse_logreg.pkl",
+  "selector": "train_only_logistic_multiview_coarse_notemplate_v1",
+  "examples": 14274,
+  "top_k": 30,
+  "avg_raw_candidate_count": 68.28100042034468,
+  "avg_kept_candidate_count": 29.821283452430993,
+  "uses_question_template": false,
+  "uses_template_path_prior": false,
+  "selection_uses_gold_or_label": false
+}

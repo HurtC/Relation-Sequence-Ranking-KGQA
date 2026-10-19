@@ -1,0 +1,277 @@
+{
+  "protocol": "METAQA-NOTEMPLATE-V3-STRICT-SUPPLEMENT-DEV-ONLY-20261012",
+  "hop": "3hop",
+  "test_loaded": false,
+  "train_path": "candidate_reasoning_space/outputs/graph_notemplate_v2_20261011/metaqa_3hop/coarse_pool/train_top30.jsonl",
+  "dev_path": "candidate_reasoning_space/outputs/graph_notemplate_v2_20261011/metaqa_3hop/coarse_pool/dev_top30.jsonl",
+  "train_sha256": "60884895315fef0dbc4a306937f60ca01319cbaa5395fb125a02020ad91df6ad",
+  "dev_sha256": "880daaaea9cfe5738e2aedbf6fd7582dff0c9ba06cad48a06b164ffa61d2e6de",
+  "anchor_sources": [
+    {
+      "path": "candidate_reasoning_space/outputs/graph_notemplate_v1_20261010/metaqa_3hop/candidate/train.jsonl",
+      "sha256": "038bb0c528bd0a35bae6bf6447227bc008a2eda3e370c9169907fab4f82ff707"
+    },
+    {
+      "path": "candidate_reasoning_space/outputs/graph_notemplate_v1_20261010/metaqa_3hop/candidate/dev.jsonl",
+      "sha256": "a3553f058a011e3140f33d6d2122d92b0a4223d9394d2c08dc5c8d3ecc0a619b"
+    }
+  ],
+  "train_examples": 10000,
+  "dev_examples": 3000,
+  "max_features": 50000,
+  "tree_estimators": 200,
+  "randomforest_max_features": "sqrt",
+  "random_state": 42,
+  "notes": [
+    "All model families in full_v3 consume the identical sparse matrix.",
+    "No test split is read by this program.",
+    "Gold answer/F1 is used only as the training target and for development evaluation.",
+    "Topic anchors are used only by the two explicitly named entity-removal audits."
+  ],
+  "feature_modes": {
+    "full_v3": {
+      "feature_mode": "full_v3",
+      "train_matrix_shape": [
+        298255,
+        50012
+      ],
+      "dev_matrix_shape": [
+        89437,
+        50012
+      ],
+      "vocabulary_size": 50000,
+      "train_anchor_audit": {
+        "question_count": 10000,
+        "changed_question_count": 10000,
+        "missing_anchor_count": 0,
+        "missing_anchor_qids_first20": []
+      },
+      "dev_anchor_audit": {
+        "question_count": 3000,
+        "changed_question_count": 3000,
+        "missing_anchor_count": 0,
+        "missing_anchor_qids_first20": []
+      },
+      "models": {
+        "randomforest": {
+          "summary": {
+            "examples": 3000,
+            "avg_precision": 0.9937944444444448,
+            "avg_recall": 0.9762582208575754,
+            "avg_f1": 0.9827648342469489,
+            "exact_rate": 0.883,
+            "set_hits_at_1": 0.995
+          },
+          "best_iteration": null,
+          "elapsed_seconds": 91.49940061569214
+        },
+        "lightgbm_regression": {
+          "summary": {
+            "examples": 3000,
+            "avg_precision": 0.9940833333333333,
+            "avg_recall": 0.9768568909901854,
+            "avg_f1": 0.9834663436565413,
+            "exact_rate": 0.8853333333333333,
+            "set_hits_at_1": 0.9953333333333333
+          },
+          "best_iteration": 998,
+          "elapsed_seconds": 140.55018067359924
+        },
+        "lambdamart": {
+          "summary": {
+            "examples": 3000,
+            "avg_precision": 0.9973517361111113,
+            "avg_recall": 0.9808788557782104,
+            "avg_f1": 0.9870269224370163,
+            "exact_rate": 0.8886666666666667,
+            "set_hits_at_1": 0.9983333333333333
+          },
+          "best_iteration": 255,
+          "elapsed_seconds": 86.67657518386841
+        },
+        "extratrees": {
+          "summary": {
+            "examples": 3000,
+            "avg_precision": 0.9915062222222223,
+            "avg_recall": 0.9757375137868685,
+            "avg_f1": 0.9807414445613227,
+            "exact_rate": 0.8806666666666667,
+            "set_hits_at_1": 0.9946666666666667
+          },
+          "best_iteration": null,
+          "elapsed_seconds": 5387.794709920883
+        },
+        "logistic_regression": {
+          "summary": {
+            "examples": 3000,
+            "avg_precision": 0.9162078166103872,
+            "avg_recall": 0.9667707124173704,
+            "avg_f1": 0.9131540557989017,
+            "exact_rate": 0.779,
+            "set_hits_at_1": 0.989
+          },
+          "best_iteration": null,
+          "elapsed_seconds": 150.36472821235657
+        }
+      },
+      "paired_bootstrap": {
+        "lambdamart_vs_randomforest": {
+          "reference_minus_comparison": 0.004262088190067465,
+          "ci95_low": 0.0018401195896791754,
+          "ci95_high": 0.006932118888116295,
+          "bootstrap_replicates": 10000
+        },
+        "lambdamart_vs_lightgbm_regression": {
+          "reference_minus_comparison": 0.003560578780475228,
+          "ci95_low": 0.0011661015932180605,
+          "ci95_high": 0.006074884237966108,
+          "bootstrap_replicates": 10000
+        },
+        "lambdamart_vs_extratrees": {
+          "reference_minus_comparison": 0.006285477875693206,
+          "ci95_low": 0.0034350637479477384,
+          "ci95_high": 0.00938846843850436,
+          "bootstrap_replicates": 10000,
+          "paired_qids": 3000
+        },
+        "lambdamart_vs_logistic_regression": {
+          "reference_minus_comparison": 0.07387286663811418,
+          "ci95_low": 0.06569755325027513,
+          "ci95_high": 0.08227472670160765,
+          "bootstrap_replicates": 10000
+        }
+      }
+    },
+    "no_interaction": {
+      "feature_mode": "no_interaction",
+      "train_matrix_shape": [
+        298255,
+        28005
+      ],
+      "dev_matrix_shape": [
+        89437,
+        28005
+      ],
+      "vocabulary_size": 27993,
+      "train_anchor_audit": {
+        "question_count": 10000,
+        "changed_question_count": 10000,
+        "missing_anchor_count": 0,
+        "missing_anchor_qids_first20": []
+      },
+      "dev_anchor_audit": {
+        "question_count": 3000,
+        "changed_question_count": 3000,
+        "missing_anchor_count": 0,
+        "missing_anchor_qids_first20": []
+      },
+      "models": {
+        "lambdamart": {
+          "summary": {
+            "examples": 3000,
+            "avg_precision": 0.996188888888889,
+            "avg_recall": 0.9798788557782104,
+            "avg_f1": 0.9858575785396934,
+            "exact_rate": 0.8876666666666667,
+            "set_hits_at_1": 0.9973333333333333
+          },
+          "best_iteration": 571,
+          "elapsed_seconds": 39.19949507713318
+        }
+      },
+      "paired_bootstrap": {}
+    },
+    "interaction_anchor_removed": {
+      "feature_mode": "interaction_anchor_removed",
+      "train_matrix_shape": [
+        298255,
+        50012
+      ],
+      "dev_matrix_shape": [
+        89437,
+        50012
+      ],
+      "vocabulary_size": 50000,
+      "train_anchor_audit": {
+        "question_count": 10000,
+        "changed_question_count": 10000,
+        "missing_anchor_count": 0,
+        "missing_anchor_qids_first20": []
+      },
+      "dev_anchor_audit": {
+        "question_count": 3000,
+        "changed_question_count": 3000,
+        "missing_anchor_count": 0,
+        "missing_anchor_qids_first20": []
+      },
+      "models": {
+        "lambdamart": {
+          "summary": {
+            "examples": 3000,
+            "avg_precision": 0.9976833333333334,
+            "avg_recall": 0.9805455224448769,
+            "avg_f1": 0.9872456904278051,
+            "exact_rate": 0.8893333333333333,
+            "set_hits_at_1": 0.998
+          },
+          "best_iteration": 267,
+          "elapsed_seconds": 54.69774627685547
+        }
+      },
+      "paired_bootstrap": {}
+    },
+    "all_question_anchor_removed": {
+      "feature_mode": "all_question_anchor_removed",
+      "train_matrix_shape": [
+        298255,
+        22643
+      ],
+      "dev_matrix_shape": [
+        89437,
+        22643
+      ],
+      "vocabulary_size": 22631,
+      "train_anchor_audit": {
+        "question_count": 10000,
+        "changed_question_count": 10000,
+        "missing_anchor_count": 0,
+        "missing_anchor_qids_first20": []
+      },
+      "dev_anchor_audit": {
+        "question_count": 3000,
+        "changed_question_count": 3000,
+        "missing_anchor_count": 0,
+        "missing_anchor_qids_first20": []
+      },
+      "models": {
+        "lambdamart": {
+          "summary": {
+            "examples": 3000,
+            "avg_precision": 0.9976833333333334,
+            "avg_recall": 0.9805455224448769,
+            "avg_f1": 0.9872456904278051,
+            "exact_rate": 0.8893333333333333,
+            "set_hits_at_1": 0.998
+          },
+          "best_iteration": 197,
+          "elapsed_seconds": 19.58273696899414
+        }
+      },
+      "paired_bootstrap": {}
+    }
+  },
+  "randomforest_primary": {
+    "n_estimators": 200,
+    "max_features": "sqrt",
+    "reason": "consistent conventional random-subspace RandomForest across all hops"
+  },
+  "randomforest_all_features_diagnostic": {
+    "available": false,
+    "reason": "aborted after ExtraTrees completed because the projected runtime was several additional hours; no partial RandomForest result is reported"
+  },
+  "extratrees": {
+    "n_estimators": 200,
+    "max_features": 1.0,
+    "completed": true
+  }
+}
